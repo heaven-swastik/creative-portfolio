@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TYPE SYSTEM — editorial display, grotesque body, hand-sketch
+   ============================================================ */
+@theme {
+  --font-sans: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Unbounded', 'Bricolage Grotesque', ui-sans-serif, sans-serif;
+  --font-hand: 'Caveat', cursive;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Premium light palette — soft whites, dark greys, rich red accent */
+  --color-ink: #16151a;          /* primary text — near-black charcoal, never pure black */
+  --color-ink-soft: #4a4852;     /* secondary text */
+  --color-paper: #faf9f6;        /* app background — warm soft white */
+  --color-surface: #ffffff;      /* card / panel surface */
+  --color-surface-sunken: #f2f0ea; /* recessed panel tone */
+  --color-line: #8a8790;         /* neutral divider grey */
+  --color-signal-red: #b3122a;   /* rich editorial red accent */
+  --color-signal-red-soft: #d94a3a;
+
+  /* legacy alias kept for any un-migrated component reference */
+  --color-void: #faf9f6;
+  --color-signal-green: #b3122a;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color-scheme: light;
+  }
+
+  ::selection {
+    background: var(--color-signal-red);
+    color: #ffffff;
+  }
+
+  * {
+    scrollbar-color: rgba(22, 21, 26, 0.25) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(22, 21, 26, 0.18);
+    border-radius: 999px;
+    border: 2px solid var(--color-paper);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(179, 18, 42, 0.45);
+  }
+}
+
+@layer utilities {
+
+  /* ------------------------------------------------------------
+     PAPER / SKETCH-PAD TEXTURE — faint blueprint grid on white
+     ------------------------------------------------------------ */
+  .sketch-paper {
+    background-image:
+      linear-gradient(rgba(22, 21, 26, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(22, 21, 26, 0.05) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  /* ------------------------------------------------------------
+     DISTORTED / OUTLINE DISPLAY TYPE — for hero-scale headlines
+     ------------------------------------------------------------ */
+  .type-distort-outline {
+    font-family: var(--font-display);
+    -webkit-text-stroke: 1.5px var(--color-ink);
+    color: transparent;
+    letter-spacing: -0.02em;
+  }
+
+  .type-distort-solid {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  /* Refined "misregistered print" effect — single red ghost pass,
+     restrained for a premium editorial palette instead of RGB split */
+  .type-rgb-split {
+    position: relative;
+    color: var(--color-ink);
+  }
+  .type-rgb-split::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--color-signal-red);
+    mix-blend-mode: multiply;
+    transform: translate(2.5px, 2px);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  /* Handwritten pencil-note style */
+  .type-hand {
+    font-family: var(--font-hand);
+    font-weight: 600;
+  }
+
+  /* ------------------------------------------------------------
+     CORNER CROP-MARK FRAME — editor/selection-handle brackets
+     ------------------------------------------------------------ */
+  .crop-frame {
+    position: relative;
+  }
+  .crop-frame::before,
+  .crop-frame::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .crop-frame::before {
+    top: -7px;
+    left: -7px;
+    border-top: 2px solid var(--color-ink);
+    border-left: 2px solid var(--color-ink);
+  }
+  .crop-frame::after {
+    bottom: -7px;
+    right: -7px;
+    border-bottom: 2px solid var(--color-ink);
+    border-right: 2px solid var(--color-ink);
+  }
+  .crop-frame .crop-handle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--color-paper);
+    border: 1.5px solid var(--color-ink);
+  }
+
+  /* Dashed sketch underline */
+  .sketch-underline {
+    text-decoration: none;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-signal-red) 0 6px,
+      transparent 6px 11px
+    );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 100% 2px;
+    padding-bottom: 4px;
+  }
+
+  /* Ultra-fine premium film grain — barely-there texture over light surfaces */
+  .grain-overlay {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: calc(100vw + 200px);
+    height: calc(100vh + 200px);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain-shift 8s steps(10) infinite;
+  }
+
+  @keyframes grain-shift {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-20px, -10px); }
+    20% { transform: translate(-5px, 20px); }
+    30% { transform: translate(-15px, -30px); }
+    40% { transform: translate(10px, 15px); }
+    50% { transform: translate(-25px, 10px); }
+    60% { transform: translate(5px, -20px); }
+    70% { transform: translate(15px, 5px); }
+    80% { transform: translate(-10px, -15px); }
+    90% { transform: translate(20px, 10px); }
+  }
+
+  /* Soft editorial vignette — barely perceptible depth at the frame edges */
+  .camera-lens-vignette {
+    position: fixed;
+    inset: 0;
+    box-shadow: inset 0 0 120px rgba(22, 21, 26, 0.05), inset 0 0 260px rgba(22, 21, 26, 0.04);
+    pointer-events: none;
+    z-index: 9990;
+  }
+
+  /* Cinematic lens glare — a whisper of warm red light in the corner */
+  .lens-glare {
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(179, 18, 42, 0.05) 0%, rgba(179, 18, 42, 0.02) 40%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 9980;
+  }
+
+  /* Restrained chromatic hint for text accents */
+  .chromatic-text {
+    text-shadow: 0.5px 0.5px 0 rgba(179, 18, 42, 0.25);
+  }
+
+  /* Swastik's signature light textured gradient backdrop */
+  .swastik-aura-bg {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(179, 18, 42, 0.06) 0%, transparent 42%),
+      radial-gradient(circle at 88% 12%, rgba(179, 18, 42, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(22, 21, 26, 0.04) 0%, transparent 55%),
+      var(--color-paper);
+  }
+
+  .swastik-glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(22, 21, 26, 0.09);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 2px rgba(22, 21, 26, 0.04), 0 24px 48px -16px rgba(22, 21, 26, 0.12);
+  }
+
+  .swastik-glass-card:hover {
+    border-color: rgba(179, 18, 42, 0.32);
+    box-shadow: 0 1px 2px rgba(22, 21, 26, 0.04), 0 28px 56px -14px rgba(179, 18, 42, 0.14);
+  }
+
+  .swastik-acid-text {
+    background: linear-gradient(100deg, #b3122a 0%, #d94a3a 55%, #8f0f22 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .swastik-violet-text {
+    background: linear-gradient(135deg, #16151a 0%, #b3122a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .swastik-btn-primary {
+    background: linear-gradient(135deg, #b3122a 0%, #8f0f22 100%);
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  .swastik-grain-heavy {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+  }
+
+  /* Subtle premium card elevation used throughout the redesign */
+  .swastik-elevated {
+    box-shadow: 0 1px 2px rgba(22, 21, 26, 0.04), 0 12px 32px -12px rgba(22, 21, 26, 0.14);
+  }
+
+  .swastik-elevated-lg {
+    box-shadow: 0 2px 4px rgba(22, 21, 26, 0.05), 0 32px 64px -20px rgba(22, 21, 26, 0.22);
+  }
+
+  /* GSAP reveal helper classes — elements start hidden and are revealed via JS */
+  .gsap-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .gsap-reveal-up {
+    opacity: 0;
+    transform: translateY(48px);
+    will-change: transform, opacity;
+  }
+
+  /* Magnetic interactive element base */
+  .magnetic-target {
+    will-change: transform;
+  }
+
+  /* ------------------------------------------------------------
+     SCROLL STACK — sticky-stacking cards (see ScrollStack.tsx)
+     ------------------------------------------------------------ */
+  .scroll-stack-item-track {
+    min-height: 88vh;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 2.5rem;
+  }
+  .scroll-stack-item-track:last-child {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+  .scroll-stack-item {
+    width: 100%;
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-stack-item {
+      position: relative !important;
+      top: 0 !important;
+    }
+    .scroll-stack-item-track {
+      min-height: 0;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 40s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gsap-reveal,
+    .gsap-reveal-up {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .grain-overlay {
+      animation: none;
+    }
+  }
+}

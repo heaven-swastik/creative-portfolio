@@ -1,0 +1,6 @@
+{
+  "name": "Visual Creator Digital Exhibition",
+  "description": "An immersive, FWA-grade cinematic digital exhibition and visual portfolio for a premium creative designer, experience designer, and visual storyteller.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
