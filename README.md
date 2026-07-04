@@ -8,15 +8,6 @@ Where photography, cinematography, graphic design, and technology converge into 
 
 <br>
 
-![Hero](./public/readme/hero.png)
-
-[🌐 Live Demo](https://your-vercel-link.vercel.app)
-•
-[📷 Photography](#photography)
-•
-[🎬 Cinematography](#cinematography)
-•
-[🎨 Graphic Design](#graphic-design)
 
 </div>
 
