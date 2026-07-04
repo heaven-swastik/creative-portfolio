@@ -1,205 +1,182 @@
-<div align="center">
+# Still Frames
 
-# STILL FRAMES
+**Still Frames** is an immersive digital exhibition and creative portfolio by **Swastik Manna**, designed to showcase photography, cinematography, graphic design, and development work through a narrative-driven experience rather than a conventional portfolio layout.
 
-### A Cinematic Digital Exhibition by Swastik Manna
+Instead of presenting projects as isolated cards or galleries, the website guides visitors through carefully crafted exhibits, where every interaction, transition, and visual element contributes to a cohesive storytelling experience.
 
-Where photography, cinematography, graphic design, and technology converge into a single immersive experience.
-
-<br>
-
-
-</div>
+The project embraces an editorial design philosophy inspired by museums, magazines, and cinematic narratives, combining premium aesthetics with interactive web technologies.
 
 ---
 
-# About
+## Concept
 
-Still Frames isn't a traditional portfolio.
+The portfolio is divided into curated exhibition spaces, allowing visitors to explore different creative disciplines while maintaining a consistent visual identity throughout the experience.
 
-It's designed as an **interactive digital exhibition**, allowing visitors to move through curated creative spaces instead of scrolling through ordinary project cards.
-
-Inspired by modern editorial layouts, museum exhibitions, and cinematic storytelling, every interaction is intentionally crafted—from page transitions to gallery navigation.
+The journey is designed to feel less like browsing a website and more like walking through a digital exhibition.
 
 ---
 
-# Preview
+## Exhibits
 
-## Hero Experience
+### Exhibit I — Photography
 
-![Hero](./public/readme/hero.gif)
-
----
-
-## Photography Exhibition
-
-A WebGL-powered Lens Curve lets visitors browse photographs in an immersive circular gallery before transitioning into a narrated visual storybook.
-
-![Photography](./public/readme/photo.png)
+A collection of original photographs presented through an interactive WebGL-powered circular gallery called the **Lens Curve**. Visitors can navigate the collection naturally before continuing into a visual storybook where selected photographs are accompanied by handwritten notes, personal reflections, and contextual narratives.
 
 ---
 
-## Cinematography
+### Exhibit II — Cinematography
 
-Film projects are showcased inside a dedicated cinematic theater experience featuring fullscreen playback and immersive presentation.
-
-![Cinema](./public/readme/cinema.png)
+A cinematic showcase featuring short films and visual sequences presented in a theater-inspired interface. Videos are displayed in an immersive fullscreen environment with a strong emphasis on composition, pacing, and storytelling.
 
 ---
 
-## Graphic Design
+### Exhibit III — Graphic Design
 
-Graphic design projects are presented as curated exhibitions instead of simple grids.
+A curated presentation of branding projects, calendar designs, identity systems, event graphics, posters, apparel, and editorial work.
 
-Sections include:
-
-- Brand Identity
-- Calendar Design
-- Event Posters
-- ID Card Mockups
-- Editorial Graphics
-
-![Graphics](./public/readme/graphics.png)
+Rather than relying on a traditional portfolio grid, projects are grouped according to their design purpose and presented using layouts that best represent their visual characteristics.
 
 ---
 
 ## About
 
-The portfolio also introduces my philosophy, workflow and creative approach through interactive editorial layouts.
+The portfolio also introduces the creative philosophy behind the work, highlighting the balance between observation and construction.
 
-![About](./public/readme/about.png)
-
----
-
-# Features
-
-- Immersive museum-inspired navigation
-- Editorial visual storytelling
-- Premium light aesthetic
-- Smooth GSAP animations
-- Framer Motion page transitions
-- WebGL powered circular gallery
-- Interactive storytelling
-- Responsive across devices
-- Optimized image loading
-- Modular component architecture
+It reflects an approach where photography captures reality, graphic design constructs meaning, cinematography tells stories through motion, and development transforms ideas into interactive experiences.
 
 ---
 
-# Tech Stack
+## Features
 
-| Frontend | Animation | Graphics | Deployment |
-|-----------|-----------|-----------|------------|
-| React 19 | GSAP | OGL | Vercel |
-| TypeScript | Framer Motion | WebGL | GitHub |
-| Vite 6 | ScrollTrigger | Tailwind CSS v4 | Cloudinary |
+- Editorial-inspired user interface
+- Museum-style exhibition flow
+- Interactive WebGL photography gallery
+- Visual storytelling through curated layouts
+- Cinematic transitions between sections
+- Responsive experience across devices
+- Smooth animations powered by GSAP and Framer Motion
+- Modular and scalable component architecture
+- Optimized media handling
+- Modern frontend development workflow
 
 ---
 
-# Project Structure
+## Technology Stack
 
-```text
+### Frontend
+
+- React 19
+- TypeScript
+- Vite 6
+- Tailwind CSS v4
+
+### Animation
+
+- GSAP
+- ScrollTrigger
+- Framer Motion
+
+### Graphics & Rendering
+
+- OGL (WebGL)
+
+### Media
+
+- Cloudinary (Video Hosting)
+
+---
+
+## Design Principles
+
+The project follows a restrained editorial visual language built around:
+
+- Clean typography
+- Soft paper-inspired surfaces
+- Minimal color palette
+- Rich red accent highlights
+- Cinematic motion
+- Purposeful whitespace
+- Story-first presentation
+
+Every interaction is designed to support the content rather than distract from it.
+
+---
+
+## Project Structure
+
+```
 src/
-
-components/
-hooks/
-assets/
-pages/
-lib/
-types/
-data.ts
+├── assets/
+├── components/
+├── hooks/
+├── lib/
+├── types/
+├── data.ts
+├── App.tsx
+└── main.tsx
 
 public/
-
-graphics/
-photography/
-cinematography/
+├── graphics/
+├── photography/
+├── cinematography/
+└── icons/
 ```
 
 ---
 
-# Design Philosophy
+## Getting Started
 
-The project follows an editorial design system built around three principles.
-
-- Observe
-- Construct
-- Experience
-
-Instead of overwhelming visitors with dozens of projects, every section encourages slower exploration and visual storytelling.
-
----
-
-# Performance
-
-✔ Lazy Loaded Assets
-
-✔ Responsive Images
-
-✔ Optimized Build
-
-✔ Code Splitting
-
-✔ Smooth 60FPS Animations
-
-✔ Production Ready
-
----
-
-# Installation
+Install dependencies
 
 ```bash
-git clone https://github.com/yourusername/still-frames.git
-
-cd still-frames
-
 npm install
+```
 
+Run the development server
+
+```bash
 npm run dev
 ```
 
----
-
-# Build
+Build the project
 
 ```bash
 npm run build
 ```
 
----
+Preview the production build
 
-# Upcoming Improvements
-
-- Dark Mode
-- CMS Integration
-- Blog
-- Motion Preferences
-- Project Search
-- Analytics Dashboard
+```bash
+npm run preview
+```
 
 ---
 
-# Creator
+## Project Goals
 
-## Swastik Manna
-
-Creative Developer • Designer • Photographer • Filmmaker
-
-I'm passionate about blending **design**, **technology**, and **storytelling** into memorable digital experiences.
-
-If you enjoyed exploring this project, feel free to connect.
-
-- Portfolio
-- LinkedIn
-- Instagram
-- GitHub
+- Present creative work through storytelling instead of conventional galleries.
+- Blend design, technology, and motion into a cohesive digital experience.
+- Demonstrate modern frontend development practices alongside visual design.
+- Create an engaging and memorable portfolio that reflects both technical and creative abilities.
 
 ---
 
-<div align="center">
+## Future Enhancements
 
-### Built with ❤️, curiosity, and countless late nights.
+- Additional photography stories
+- Expanded cinematography collection
+- New graphic design case studies
+- Improved accessibility
+- Content management integration
+- Performance optimizations
+- Internationalization support
 
-If you like the project, consider giving it a ⭐
+---
 
-</div>
+## License
+
+This repository is intended for portfolio and educational purposes.
+
+The source code may be referenced for learning, but all creative assets—including photographs, videos, graphics, branding materials, and written content—remain the intellectual property of **Swastik Manna** and may not be reproduced, redistributed, or used without permission.
+
+© 2026 Swastik Manna. All Rights Reserved.
