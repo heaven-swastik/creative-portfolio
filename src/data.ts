@@ -39,7 +39,7 @@ import ganeshaImmersion from './assets/images/photography/ganesha-immersion.webp
 import brandingHeavensCafe from './assets/images/graphics/branding-heavens-cafe.webp';
 import brandingEpiquench from './assets/images/graphics/branding-epiquench.webp';
 import calendarFathersDay from './assets/images/graphics/calendar-fathers-day.webp';
-import calendarNoTobaccoDay from './assets/images/graphics/calendar-no-tobacco-day.webp';
+import calendarNoTobaccoDay from './assets/images/graphics/calendar-no-tobacco-day.png';
 import calendarSportsDay from './assets/images/graphics/calendar-sports-day.webp';
 import calendarEducatorsDay from './assets/images/graphics/calendar-educators-day.webp';
 import eventGenAiPractical from './assets/images/graphics/event-genai-practical.webp';
